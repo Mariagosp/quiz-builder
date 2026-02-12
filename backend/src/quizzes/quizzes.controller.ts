@@ -21,8 +21,9 @@ export class QuizzesController {
     return this.quizzesService.findOne(id);
   }
 
-  @Delete()
+  @Delete(':id')
   removeQuizzes(@Param('id') id: string) {
+    console.log('remove id', id)
     return this.quizzesService.remove(id);
   }
 }
