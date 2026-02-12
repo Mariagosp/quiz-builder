@@ -11,7 +11,7 @@ A full-stack web application for creating and managing custom quizzes. Users can
 **Backend**
 - NESTJS
 - TypeScript
-- Prisma ORM (PostgreSQL or SQLite)
+- Prisma ORM (PostgreSQL)
 - REST API
 
 ## Features
