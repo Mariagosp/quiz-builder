@@ -1,117 +1,211 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { Question, QuestionType } from '../../types';
+import { Question, QuestionType } from "../../types";
+import styles from "./QuestionInput.module.css";
+import ValidationErrorMessage from "../ValidationErrorMessage";
+import BooleanRadio from "../BooleanRadio";
+import Close from "../Icons/Close";
+import Plus from "../Icons/Plus";
+import Delete from "../Icons/Delete";
 
 interface QuestionInputProps {
   question: Question;
+  questionNumber: number;
   onChange: (q: Question) => void;
   onRemove: () => void;
+  disabled?: boolean;
+  error?: string;
 }
 
 export default function QuestionInput({
   question,
+  questionNumber,
   onChange,
   onRemove,
+  disabled,
+  error,
 }: QuestionInputProps) {
-  const [title, setTitle] = useState(question.title);
-  const [type, setType] = useState<QuestionType>(question.type);
-  const [options, setOptions] = useState<string[]>(question.options || []);
-  const [correctAnswers, setCorrectAnswers] = useState<any>(
-    question.correctAnswers || ''
-  );
-
-  useEffect(() => {
-    onChange({ title, type, options, correctAnswers });
-  }, [title, type, options, correctAnswers]);
-
-  const addOption = () => setOptions([...options, '']);
-
-  const updateOption = (idx: number, value: string) => {
-    const newOptions = [...options];
-    newOptions[idx] = value;
-    setOptions(newOptions);
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange({
+      ...question,
+      title: e.target.value,
+    });
   };
 
-  const removeOption = (idx: number) => {
-    const newOptions = [...options];
-    newOptions.splice(idx, 1);
-    setOptions(newOptions);
+  const handleTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newType = e.target.value as QuestionType;
+
+    onChange({
+      ...question,
+      type: newType,
+      options: newType === "CHECKBOX" ? question.options || [""] : [],
+      correctAnswers: newType === "BOOLEAN" ? false : "",
+    });
+  };
+
+  const handleOptionChange = (index: number, value: string) => {
+    const newOptions = [...(question.options || [])];
+    newOptions[index] = value;
+    onChange({
+      ...question,
+      options: newOptions,
+    });
+  };
+
+  const handleAddOption = () => {
+    onChange({
+      ...question,
+      options: [...(question.options || []), ""],
+    });
+  };
+
+  const handleRemoveOption = (index: number) => {
+    const newOptions = (question.options || []).filter((_, i) => i !== index);
+    onChange({
+      ...question,
+      options: newOptions,
+    });
+  };
+
+  const handleCorrectAnswersChange = (value: string | boolean) => {
+    onChange({
+      ...question,
+      correctAnswers: value,
+    });
   };
 
   return (
-    <div style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
-      <input
-        type="text"
-        placeholder="Question title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-
-      <select value={type} onChange={(e) => setType(e.target.value as QuestionType)}>
-        <option value="BOOLEAN">Boolean (True/False)</option>
-        <option value="INPUT">Input</option>
-        <option value="CHECKBOX">Checkbox</option>
-      </select>
-
-      {type === 'CHECKBOX' && (
-        <div>
-          <h5>Options</h5>
-          {options.map((opt, idx) => (
-            <div key={idx}>
-              <input
-                type="text"
-                value={opt}
-                onChange={(e) => updateOption(idx, e.target.value)}
-                placeholder={`Option ${idx + 1}`}
-              />
-              <button type="button" onClick={() => removeOption(idx)}>
-                Remove
-              </button>
-            </div>
-          ))}
-          <button type="button" onClick={addOption}>
-            Add Option
-          </button>
-
-          <label>Correct Answers (comma separated indices starting from 1)</label>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <div className={styles.titleRow}>
+          <div className={styles.badge}>{questionNumber}</div>
           <input
             type="text"
-            value={Array.isArray(correctAnswers) ? correctAnswers.join(',') : ''}
-            onChange={(e) =>
-              setCorrectAnswers(e.target.value.split(',').map((v) => v.trim()))
+            placeholder="Enter your question..."
+            value={question.title || ""}
+            onChange={handleTitleChange}
+            className={styles.titleInput}
+            disabled={disabled}
+          />
+        </div>
+
+        <button
+          type="button"
+          onClick={onRemove}
+          disabled={disabled}
+          className={styles.removeButton}
+          title="Remove question"
+        >
+          <Close />
+        </button>
+      </div>
+
+      <div className={styles.formGroup}>
+        <label className={styles.label}>Question Type</label>
+        <select
+          value={question.type}
+          onChange={handleTypeChange}
+          className={styles.select}
+          disabled={disabled}
+        >
+          <option value="BOOLEAN">True/False</option>
+          <option value="INPUT">Text Input</option>
+          <option value="CHECKBOX">Multiple Choice</option>
+        </select>
+      </div>
+
+      {question.type === "CHECKBOX" && (
+        <div className={styles.optionsSection}>
+          <div className={styles.optionsHeader}>
+            <label className={styles.label}>Answer Options</label>
+            <button
+              type="button"
+              onClick={handleAddOption}
+              disabled={disabled}
+              className={styles.addOptionButton}
+            >
+              <Plus />
+              Add Option
+            </button>
+          </div>
+
+          <div className={styles.optionsList}>
+            {(question.options || []).map((option, idx) => (
+              <div key={idx} className={styles.optionRow}>
+                <p className={styles.label}>{idx + 1}</p>
+                <input
+                  type="text"
+                  value={option}
+                  onChange={(e) => handleOptionChange(idx, e.target.value)}
+                  placeholder={`Option ${idx + 1}`}
+                  className={styles.optionInput}
+                  disabled={disabled}
+                />
+                <button
+                  type="button"
+                  onClick={() => handleRemoveOption(idx)}
+                  disabled={disabled}
+                  className={styles.deleteOptionButton}
+                  title="Remove option"
+                >
+                  <Delete />
+                </button>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.formGroup}>
+            <label className={styles.label}>
+              Correct Answers
+              <span className={styles.hint}>
+                (comma separated indices: e.g., 1,3 for first and third options)
+              </span>
+            </label>
+            <input
+              type="text"
+              value={
+                typeof question.correctAnswers === "string"
+                  ? question.correctAnswers
+                  : ""
+              }
+              onChange={(e) => handleCorrectAnswersChange(e.target.value)}
+              placeholder="1,2,3"
+              className={styles.input}
+              disabled={disabled}
+            />
+          </div>
+        </div>
+      )}
+
+      {question.type === "BOOLEAN" && (
+        <div className={styles.formGroup}>
+          <label className={styles.label}>Correct Answer</label>
+          <BooleanRadio
+            value={!!question.correctAnswers}
+            onChange={handleCorrectAnswersChange}
+            disabled={disabled}
+          />
+        </div>
+      )}
+
+      {question.type === "INPUT" && (
+        <div className={styles.formGroup}>
+          <label className={styles.label}>Expected Answer</label>
+          <input
+            type="text"
+            value={
+              typeof question.correctAnswers === "string"
+                ? question.correctAnswers
+                : ""
             }
+            onChange={(e) => handleCorrectAnswersChange(e.target.value)}
+            placeholder="Enter the correct answer..."
+            className={styles.input}
+            disabled={disabled}
           />
         </div>
       )}
-
-      {type === 'BOOLEAN' && (
-        <div>
-          <label>Correct Answer:</label>
-          <select
-            value={correctAnswers ? 'true' : 'false'}
-            onChange={(e) => setCorrectAnswers(e.target.value === 'true')}
-          >
-            <option value="true">True</option>
-            <option value="false">False</option>
-          </select>
-        </div>
-      )}
-
-      {type === 'INPUT' && (
-        <div>
-          <label>Correct Answer:</label>
-          <input
-            type="text"
-            value={correctAnswers || ''}
-            onChange={(e) => setCorrectAnswers(e.target.value)}
-          />
-        </div>
-      )}
-
-      <button type="button" onClick={onRemove}>
-        Remove Question
-      </button>
+      <ValidationErrorMessage isVisible={!!error} text={error || ""} />
     </div>
   );
 }

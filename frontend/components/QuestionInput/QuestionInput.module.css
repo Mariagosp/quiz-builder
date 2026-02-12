@@ -1,0 +1,252 @@
+.container {
+  background: linear-gradient(
+    135deg,
+    #fafafa 0%,
+    rgba(249, 250, 251, 0.5) 100%
+  );
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  padding: 1.5rem;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.container {
+  animation: slideIn 0.4s ease-out;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.badge {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: linear-gradient(135deg, #6366f1 0%, #9333ea 100%);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+}
+
+.titleInput {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  color: #111827;
+  transition: all 0.3s;
+}
+
+.titleInput:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #6366f1;
+}
+
+.titleInput::placeholder {
+  color: #9ca3af;
+}
+
+.titleInput:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.removeButton {
+  padding: 0.5rem;
+  color: #dc2626;
+  background: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.removeButton:hover {
+  background: rgba(220, 38, 38, 0.1);
+}
+
+.removeButton svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.removeButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.hint {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #9ca3af;
+  margin-left: 0.5rem;
+}
+
+.select,
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  color: #111827;
+  transition: all 0.3s;
+}
+
+.select:focus,
+.input:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #6366f1;
+}
+
+.select:disabled,
+.input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+.optionsSection {
+  padding-top: 0.5rem;
+}
+
+.optionsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.addOptionButton {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.addOptionButton:hover {
+  background: rgba(99, 102, 241, 0.2);
+}
+
+.addOptionButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.addOptionButton svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.optionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.optionRow {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.optionInput {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  color: #111827;
+  transition: all 0.3s;
+}
+
+.optionInput:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #6366f1;
+}
+
+.optionInput::placeholder {
+  color: #9ca3af;
+}
+
+.optionInput:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.deleteOptionButton {
+  padding: 0.5rem 0.75rem;
+  background: #fef2f2;
+  color: #dc2626;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.deleteOptionButton:hover {
+  background: #fee2e2;
+}
+
+.deleteOptionButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.deleteOptionButton svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}

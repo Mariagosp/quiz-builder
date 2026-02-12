@@ -1,0 +1,147 @@
+.questionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.questionCard {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f3f4f6;
+  padding: 1.5rem;
+  transition: box-shadow 0.3s;
+}
+
+.questionCard:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.dark .questionCard {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+.questionContent {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.questionNumber {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: linear-gradient(135deg, #6366f1 0%, #9333ea 100%);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+}
+
+.questionBody {
+  flex: 1;
+}
+
+.questionTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.75rem;
+}
+
+.dark .questionTitle {
+  color: white;
+}
+
+.typeBadge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.dark .typeBadge {
+  background: rgba(99, 102, 241, 0.3);
+  color: #a5b4fc;
+}
+
+.optionsLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.dark .optionsLabel {
+  color: #d1d5db;
+}
+
+.optionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.optionItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4b5563;
+  background: #fafafa;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.dark .optionItem {
+  color: #d1d5db;
+  background: rgba(55, 65, 81, 0.5);
+}
+
+.optionDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #6366f1;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.answerBox {
+  font-size: 0.875rem;
+  color: #4b5563;
+  background: #fafafa;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.dark .answerBox {
+  color: #d1d5db;
+  background: rgba(55, 65, 81, 0.5);
+}
+
+.answerLabel {
+  font-weight: 500;
+}
+
+.metaInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4b5563;
+  font-size: 1.125rem;
+}
+
+.dark .metaInfo {
+  color: #d1d5db;
+}
+
+.metaInfo svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}

@@ -1,0 +1,255 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.dark .label {
+  color: #d1d5db;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: #fafafa;
+  border: 1px solid #d1d5db;
+  border-radius: 0.75rem;
+  color: #111827;
+  transition: all 0.3s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #6366f1;
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+.dark .input {
+  background: #111827;
+  border-color: #374151;
+  color: white;
+}
+
+.dark .input::placeholder {
+  color: #6b7280;
+}
+
+.input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.questionsSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.dark .sectionTitle {
+  color: white;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.dark .badge {
+  background: rgba(99, 102, 241, 0.3);
+  color: #a5b4fc;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 3rem;
+  background: #fafafa;
+  border-radius: 0.75rem;
+  border: 2px dashed #d1d5db;
+}
+
+.dark .emptyState {
+  background: rgba(17, 24, 39, 0.5);
+  border-color: #374151;
+}
+
+.emptyState svg {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 0.75rem;
+  color: #9ca3af;
+}
+
+.dark .emptyState svg {
+  color: #4b5563;
+}
+
+.emptyText {
+  color: #4b5563;
+  margin-bottom: 1rem;
+}
+
+.dark .emptyText {
+  color: #9ca3af;
+}
+
+.questionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.addQuestionButton {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background: white;
+  color: #6366f1;
+  border: 2px solid rgba(99, 102, 241, 0.2);
+  border-radius: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.addQuestionButton:hover {
+  background: rgba(99, 102, 241, 0.05);
+}
+
+.dark .addQuestionButton {
+  background: #1f2937;
+  color: #818cf8;
+  border-color: rgba(99, 102, 241, 0.8);
+}
+
+.dark .addQuestionButton:hover {
+  background: rgba(99, 102, 241, 0.2);
+}
+
+.addQuestionButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.addQuestionButton svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.firstQuestionButton {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(90deg, #6366f1 0%, #9333ea 100%);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.firstQuestionButton:hover {
+  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.5);
+  transform: scale(1.05);
+}
+
+.firstQuestionButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.dark .actions {
+  border-top-color: #374151;
+}
+
+.submitButton {
+  flex: 1;
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, #6366f1 0%, #9333ea 100%);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.5);
+}
+
+.submitButton:hover {
+  box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.5);
+  transform: scale(1.05);
+}
+
+.submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submitButton svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.spinner {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid white;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,76 +1,147 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Quiz, Question, QuestionType } from '../../types';
-import QuestionInput from '../QuestionInput';
+import { Quiz } from "../../types";
+import QuestionInput from "../QuestionInput";
+import styles from "./QuizForm.module.css";
+import { Controller, useFieldArray, useForm } from "react-hook-form";
+import ValidationErrorMessage from "../ValidationErrorMessage";
+import Question from "../../components/Icons/Question";
+import Check from "../Icons/Check";
+import Plus from "../Icons/Plus";
 
 interface QuizFormProps {
   onSubmit: (quiz: Quiz) => void;
+  isLoading?: boolean;
 }
 
-export default function QuizForm({ onSubmit }: QuizFormProps) {
-  const [title, setTitle] = useState('');
-  const [questions, setQuestions] = useState<Question[]>([]);
+export default function QuizForm({ onSubmit, isLoading }: QuizFormProps) {
+  const {
+    control,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Quiz>({
+    defaultValues: {
+      title: "",
+      questions: [],
+    },
+  });
 
-  const addQuestion = () => {
-    setQuestions([
-      ...questions,
-      { title: '', type: 'BOOLEAN', options: [], correctAnswers: '' },
-    ]);
-  };
-
-  const updateQuestion = (index: number, updated: Question) => {
-    const newQuestions = [...questions];
-    newQuestions[index] = updated;
-    setQuestions(newQuestions);
-  };
-
-  const removeQuestion = (index: number) => {
-    const newQuestions = [...questions];
-    newQuestions.splice(index, 1);
-    setQuestions(newQuestions);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!title.trim()) {
-      alert('Quiz title is required');
-      return;
-    }
-    if (questions.length === 0) {
-      alert('Add at least one question');
-      return;
-    }
-    onSubmit({ title, questions });
-  };
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "questions",
+  });
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Quiz Title:</label>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <div className={styles.formGroup}>
+        <label className={styles.label}>Quiz Title</label>
         <input
           type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Enter quiz title"
+          {...register("title", { required: "Title is required" })}
+          placeholder="Enter an engaging quiz title..."
+          className={styles.input}
+          disabled={isLoading}
+        />
+        <ValidationErrorMessage
+          isVisible={!!errors.title}
+          text={errors.title?.message || ""}
         />
       </div>
 
-      <h3>Questions</h3>
-      {questions.map((q, idx) => (
-        <QuestionInput
-          key={idx}
-          question={q}
-          onChange={(updated) => updateQuestion(idx, updated)}
-          onRemove={() => removeQuestion(idx)}
-        />
-      ))}
+      <div className={styles.questionsSection}>
+        <div className={styles.sectionHeader}>
+          <h3 className={styles.sectionTitle}>Questions</h3>
+          <span className={styles.badge}>
+            {fields.length} {fields.length === 1 ? "Question" : "Questions"}
+          </span>
+        </div>
 
-      <button type="button" onClick={addQuestion}>
-        Add Question
-      </button>
+        {fields.length === 0 ? (
+          <div className={styles.emptyState}>
+            <Question />
+            <p className={styles.emptyText}>No questions added yet</p>
+            <button
+              type="button"
+              onClick={() =>
+                append({
+                  title: "",
+                  type: "BOOLEAN",
+                  options: [],
+                  correctAnswers: "",
+                })
+              }
+              className={styles.firstQuestionButton}
+              disabled={isLoading}
+            >
+              Add Your First Question
+            </button>
+          </div>
+        ) : (
+          <div>
+            <div className={styles.questionsList}>
+              {fields.map((field, idx) => (
+                <Controller
+                  key={field.id}
+                  control={control}
+                  name={`questions.${idx}` as const}
+                  rules={{
+                    validate: (q) =>
+                      q.title?.trim() !== "" || "Question title is required",
+                  }}
+                  render={({ field: qField, fieldState }) => (
+                    <QuestionInput
+                      question={qField.value}
+                      questionNumber={idx + 1}
+                      onChange={(updated) => qField.onChange(updated)}
+                      onRemove={() => remove(idx)}
+                      disabled={isLoading}
+                      error={fieldState.error?.message}
+                    />
+                  )}
+                />
+              ))}
+            </div>
 
-      <button type="submit">Create Quiz</button>
+            <button
+              type="button"
+              onClick={() =>
+                append({
+                  title: "",
+                  type: "BOOLEAN",
+                  options: [],
+                  correctAnswers: "",
+                })
+              }
+              className={styles.addQuestionButton}
+              disabled={isLoading}
+            >
+              <Plus />
+              Add Another Question
+            </button>
+          </div>
+        )}
+      </div>
+
+      <div className={styles.actions}>
+        <button
+          type="submit"
+          disabled={isLoading}
+          className={styles.submitButton}
+        >
+          {isLoading ? (
+            <>
+              <div className={styles.spinner}></div>
+              Creating Quiz...
+            </>
+          ) : (
+            <>
+              <Check />
+              Create Quiz
+            </>
+          )}
+        </button>
+      </div>
     </form>
   );
 }
