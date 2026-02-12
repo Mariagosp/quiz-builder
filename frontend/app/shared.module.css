@@ -1,6 +1,6 @@
 .pageContainer {
   min-height: 100vh;
-  background: linear-gradient(135deg, #eef2ff 0%, #ffffff 50%, #fce7f3 100%);
+  background: var(--gradient-background);
 }
 
 .mainContent {
@@ -16,21 +16,21 @@
 .backLink {
   display: inline-flex;
   align-items: center;
-  color: #6366f1;
+  color: var(--primary);
   font-weight: 500;
-  margin-bottom: 16px;
+  margin-bottom: var(--spacing-sm);
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color var(--transition-fast);
 }
 
 .backLink:hover {
-  color: #4f46e5;
+  color: var(--primary-dark);
 }
 
 .backLink svg {
   width: 20px;
   height: 20px;
-  margin-right: 8px;
+  margin-right: var(--spacing-xs);
 }
 
 .pageHeader {
@@ -55,36 +55,36 @@
 .pageTitle {
   font-size: 36px;
   font-weight: 700;
-  background: linear-gradient(90deg, #6366f1 0%, #9333ea 100%);
+  background: var(--gradient-primary);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  margin-bottom: 8px;
+  margin-bottom: var(--spacing-xs);
 }
 
 .pageDescription {
   font-size: 18px;
-  color: #4b5563;
+  color: var(--gray-600);
 }
 
 .card {
   background: white;
-  border-radius: 16px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  border: 1px solid #f3f4f6;
-  padding: 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--gray-100);
+  padding: var(--spacing-lg);
 }
 
 .alert {
-  padding: 16px;
-  border-radius: 12px;
-  margin-bottom: 24px;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
 }
 
 .alertError {
-  background: #fef2f2;
-  border: 1px solid #fecaca;
-  color: #991b1b;
+  background: var(--pink-100);
+  border: 1px solid var(--pink-200);
+  color: var(--red-700);
 }
 
 .spinner {
@@ -97,9 +97,9 @@
 .spinnerIcon {
   width: 48px;
   height: 48px;
-  border: 4px solid #6366f1;
+  border: 4px solid var(--primary);
   border-top-color: transparent;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   animation: spin 1s linear infinite;
 }
 
@@ -167,19 +167,19 @@
 .emptyButton {
   display: inline-flex;
   align-items: center;
-  padding: 12px 24px;
-  background: linear-gradient(90deg, #6366f1 0%, #9333ea 100%);
+  padding: 12px var(--spacing-md);
+  background: var(--gradient-primary);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all var(--transition-fast);
   text-decoration: none;
 }
 
 .emptyButton:hover {
-  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.5);
+  box-shadow: var(--shadow-hover);
   transform: scale(1.05);
 }
 
