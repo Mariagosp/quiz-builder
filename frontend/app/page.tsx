@@ -1,6 +1,9 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import Tapbar from "@/components/Tapbar";
+import File from "@/components/Icons/File";
+import Lighting from "@/components/Icons/Lighting";
+import Chain from "@/components/Icons/Chain";
 
 export default function Home() {
   return (
@@ -41,18 +44,10 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Features Grid */}
         <div className={`${styles.features} ${styles.fadeIn}`}>
           <div className={styles.featureCard}>
             <div className={`${styles.featureIcon} ${styles.indigo}`}>
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
-              </svg>
+              <File />
             </div>
             <h3 className={styles.featureTitle}>Multiple Question Types</h3>
             <p className={styles.featureDescription}>
@@ -62,14 +57,7 @@ export default function Home() {
 
           <div className={styles.featureCard}>
             <div className={`${styles.featureIcon} ${styles.pink}`}>
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
+              <Lighting />
             </div>
             <h3 className={styles.featureTitle}>Easy to Use</h3>
             <p className={styles.featureDescription}>
@@ -79,14 +67,7 @@ export default function Home() {
 
           <div className={styles.featureCard}>
             <div className={`${styles.featureIcon} ${styles.purple}`}>
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-                />
-              </svg>
+              <Chain />
             </div>
             <h3 className={styles.featureTitle}>Manage & Organize</h3>
             <p className={styles.featureDescription}>

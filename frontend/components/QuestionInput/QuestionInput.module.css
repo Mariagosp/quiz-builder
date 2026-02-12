@@ -4,9 +4,9 @@
     #fafafa 0%,
     rgba(249, 250, 251, 0.5) 100%
   );
-  border-radius: 0.75rem;
+  border-radius: 12px;
   border: 1px solid #e5e7eb;
-  padding: 1.5rem;
+  padding: 24px;
 }
 
 @keyframes slideIn {
@@ -28,23 +28,23 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .titleRow {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 12px;
   flex: 1;
 }
 
 .badge {
   flex-shrink: 0;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 40px;
+  height: 40px;
   background: linear-gradient(135deg, #6366f1 0%, #9333ea 100%);
-  border-radius: 0.5rem;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,10 +54,10 @@
 
 .titleInput {
   flex: 1;
-  padding: 0.75rem 1rem;
+  padding: 12px 16px;
   background: white;
   border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   font-weight: 500;
   color: #111827;
   transition: all 0.3s;
@@ -79,11 +79,11 @@
 }
 
 .removeButton {
-  padding: 0.5rem;
+  padding: 8px;
   color: #dc2626;
   background: transparent;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -93,8 +93,8 @@
 }
 
 .removeButton svg {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 20px;
+  height: 20px;
 }
 
 .removeButton:disabled {
@@ -103,31 +103,31 @@
 }
 
 .formGroup {
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 .label {
   display: block;
-  font-size: 0.875rem;
+  font-size: 14px;
   font-weight: 600;
   color: #374151;
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
 }
 
 .hint {
-  font-size: 0.75rem;
+  font-size: 12px;
   font-weight: 400;
   color: #9ca3af;
-  margin-left: 0.5rem;
+  margin-left: 8px;
 }
 
 .select,
 .input {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 12px 16px;
   background: white;
   border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   color: #111827;
   transition: all 0.3s;
 }
@@ -150,26 +150,26 @@
 }
 
 .optionsSection {
-  padding-top: 0.5rem;
+  padding-top: 8px;
 }
 
 .optionsHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
 }
 
 .addOptionButton {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  padding: 0.25rem 0.75rem;
+  gap: 4px;
+  padding: 4px 12px;
   background: rgba(99, 102, 241, 0.1);
   color: #6366f1;
   border: none;
-  border-radius: 0.5rem;
-  font-size: 0.875rem;
+  border-radius: 8px;
+  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -185,29 +185,29 @@
 }
 
 .addOptionButton svg {
-  width: 1rem;
-  height: 1rem;
+  width: 16px;
+  height: 16px;
 }
 
 .optionsList {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
 .optionRow {
   display: flex;
-  gap: 0.5rem;
+  gap: 8px;
   align-items: center;
 }
 
 .optionInput {
   flex: 1;
-  padding: 0.5rem 1rem;
+  padding: 8px 16px;
   background: white;
   border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   color: #111827;
   transition: all 0.3s;
 }
@@ -228,11 +228,11 @@
 }
 
 .deleteOptionButton {
-  padding: 0.5rem 0.75rem;
+  padding: 8px 12px;
   background: #fef2f2;
   color: #dc2626;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -247,6 +247,6 @@
 }
 
 .deleteOptionButton svg {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 20px;
+  height: 20px;
 }

@@ -1,6 +1,6 @@
 .card {
   background: white;
-  border-radius: 1rem;
+  border-radius: 16px;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   border: 1px solid #f3f4f6;
   overflow: hidden;
@@ -10,11 +10,6 @@
 .card:hover {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   transform: scale(1.05);
-}
-
-.dark .card {
-  background: #1f2937;
-  border-color: #374151;
 }
 
 @keyframes fadeIn {
@@ -33,14 +28,14 @@
 }
 
 .content {
-  padding: 1.5rem;
+  padding: 24px;
 }
 
 .header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
 .titleSection {
@@ -49,10 +44,10 @@
 
 .title {
   display: block;
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 700;
   color: #111827;
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
   transition: color 0.3s;
 }
 
@@ -60,42 +55,30 @@
   color: #6366f1;
 }
 
-.dark .title {
-  color: white;
-}
-
-.dark .card:hover .title {
-  color: #818cf8;
-}
-
 .questionCount {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
   color: #4b5563;
   font-weight: 500;
 }
 
-.dark .questionCount {
-  color: #d1d5db;
-}
-
 .questionCount svg {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 20px;
+  height: 20px;
 }
 
 .actions {
   display: flex;
-  gap: 0.75rem;
+  gap: 12px;
 }
 
 .viewButton {
   flex: 1;
-  padding: 0.5rem 1rem;
+  padding: 8px 16px;
   background: linear-gradient(90deg, #6366f1 0%, #9333ea 100%);
   color: white;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   font-weight: 500;
   text-align: center;
   transition: all 0.3s;
@@ -110,10 +93,10 @@
 }
 
 .deleteButton {
-  padding: 0.5rem 1rem;
+  padding: 8px 16px;
   background: #fef2f2;
   color: #dc2626;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   font-weight: 500;
   border: none;
   cursor: pointer;
@@ -124,21 +107,12 @@
   background: #fee2e2;
 }
 
-.dark .deleteButton {
-  background: rgba(220, 38, 38, 0.2);
-  color: #f87171;
-}
-
-.dark .deleteButton:hover {
-  background: rgba(220, 38, 38, 0.3);
-}
-
 .deleteButton svg {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 20px;
+  height: 20px;
 }
 
 .accent {
-  height: 0.25rem;
+  height: 4px;
   background: linear-gradient(90deg, #6366f1 0%, #9333ea 50%, #ec4899 100%);
 }

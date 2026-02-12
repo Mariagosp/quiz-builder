@@ -6,8 +6,8 @@ import Link from "next/link";
 import { createQuiz } from "../../services/quizzesApi";
 import { Quiz } from "../../types";
 import QuizForm from "../../components/QuizForm";
-import styles from "../shared.module.css";
 import ArrowLeft from "@/components/Icons/ArrowLeft";
+import styles from "../shared.module.css";
 
 export default function CreatePage() {
   const router = useRouter();
@@ -19,11 +19,12 @@ export default function CreatePage() {
       setIsLoading(true);
       setError(null);
 
-      const res = await createQuiz(quiz);
+      await createQuiz(quiz);
 
       router.push("/quizzes");
     } catch (err) {
       console.error(err);
+
       setError("Failed to create quiz. Please try again.");
     } finally {
       setIsLoading(false);

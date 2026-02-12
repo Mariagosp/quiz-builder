@@ -19,7 +19,7 @@ export default function QuizzesPage() {
     try {
       setIsLoading(true);
       setError(null);
-      
+
       const data = await getQuizzes();
       setQuizzes(data);
     } catch (err) {

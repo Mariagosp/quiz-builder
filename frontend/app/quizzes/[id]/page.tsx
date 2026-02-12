@@ -1,14 +1,14 @@
 'use client'
 
-import { useRouter, useParams } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { getQuiz } from '../../../services/quizzesApi';
 import { Quiz } from '../../../types';
 import sharedStyles from '../../shared.module.css';
-import styles from './page.module.css';
 import ArrowLeft from '@/components/Icons/ArrowLeft';
 import Question from '@/components/Icons/Question';
+import styles from './page.module.css';
 
 export default function QuizDetailPage() {
   const params = useParams();
