@@ -23,7 +23,6 @@ export class QuizzesController {
 
   @Delete(':id')
   removeQuizzes(@Param('id') id: string) {
-    console.log('remove id', id)
     return this.quizzesService.remove(id);
   }
 }

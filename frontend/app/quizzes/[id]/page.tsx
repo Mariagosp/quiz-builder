@@ -97,7 +97,7 @@ export default function QuizDetailPage() {
             Back to Quizzes
           </Link>
 
-          <h1 style={{ fontSize: '2.25rem', fontWeight: 700, color: '#111827', marginBottom: '0.5rem' }}>
+          <h1 className={styles.quizTitle}>
             {quiz.title}
           </h1>
           <div className={styles.metaInfo}>
